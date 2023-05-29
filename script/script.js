@@ -46,7 +46,43 @@ function verifyPlayerChoice(choiceToVerify) {
     }
 }
 
-function compareChoices() {
+function compareChoices(computer, player) {
+    if (computer === player) {
+        return "DRAW";
+    }
+    else if (computer === "rock") {
+        if (player === "scissors") {
+            return "Computer wins.";
+        }
+        else {
+            return "Player wins.";
+        }
+    }
+
+    else if (computer === "paper") {
+        if (player === "rock") {
+            return "Computer wins";
+        }
+        else {
+            return "Player wins";
+        }
+
+    }
+
+    else if (computer === "scissors") {
+        if (player === "paper") {
+            return "Computer wins";
+        }
+        else {
+            return "Player wins";
+        }
+    }
+    else {
+        return `computer somehow got ${computer} value`;
+    }
+}
+
+function playGame() {
     let compChoice = getComputerChoice();
     let playerChoice = getPlayerChoice();
     verifyPlayerChoice(playerChoice);
@@ -54,11 +90,11 @@ function compareChoices() {
         console.log(`${playerChoice} is an invalid selection, please make a valid selection`);
         playerChoice = getPlayerChoice(); 
     }
-    return playerChoice;
-
+    console.log(`Computer chose ${compChoice}.`);
+    console.log(`Player chose ${playerChoice}.`);
+    return compareChoices(compChoice, playerChoice);
 }
-console.log(compareChoices());
-// console.log(getPlayerChoice());
-// console.log(getPlayerChoice());
-// console.log(getComputerChoice());
+
+console.log(playGame());
+
 
