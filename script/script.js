@@ -26,8 +26,15 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     // Get and clean the player's choice
-    return prompt("What would you like to pick; rock, paper or scissors? ", "").toString().toLowerCase();
-
+    let initialChoice =prompt("What would you like to pick; rock, paper or scissors? ", "");
+    if (initialChoice === null){
+        return initialChoice;
+    }
+    else {
+        initialChoice.toString();
+        initialChoice.toLowerCase();
+        return initialChoice;
+    }
 }
 
 function verifyPlayerChoice(choiceToVerify) {
