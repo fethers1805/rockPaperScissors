@@ -1,4 +1,6 @@
 const gameChoices = ['rock', 'paper', 'scissors'];
+let playerWins = 0;
+let computerWins = 0;
 
 function getComputerChoice() {
     // Pick a random spot from the array of options a participant can choose from.
@@ -76,6 +78,35 @@ function playGame() {
     return compareChoices(compChoice, playerChoice);
 }
 
-console.log(playGame());
+function holdTournament() {
+    for (let i = 0; i <= 4; i++) {
+
+        let winner = playGame();
+        if (winner === `DRAW`) {
+            console.log("Draw, no winner");
+        }
+        else if (winner === `Computer wins`) {
+            computerWins++;
+            console.log(`Computer wins, they have a total of ${computerWins}`);
+        }
+        else {
+            playerWins++;
+            console.log(`Player wins, they have a total of ${playerWins}`);
+        }
+    }
+    console.log(`Total computer wins = ${computerWins}`);
+    console.log(`Total player wins = ${playerWins}`);
+    if (computerWins === playerWins) {
+        return "The tournament is a draw!";
+    }
+    else if (computerWins < playerWins) {
+        return "The player wins the tournament!";
+    }
+    else {
+        return "The Computer wins the tournament!";
+    }
+
+}
+console.log(holdTournament());
 
 
